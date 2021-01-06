@@ -30,4 +30,17 @@ class User < ApplicationRecord
   def unfollow(user)
     active_relationships.find_by(followed_id: user).destroy
   end
+
+  def self.search_record(word, how_to)
+    if how_to == 'match_all'
+      User.where(name: word)
+    elsif how_to == 'match_forward'
+      User.where('name LIKE ?', "#{word}%")
+    elsif how_to == 'match_backward'
+      User.where('name LIKE ?', "%#{word}")
+    else
+      User.where('name LIKE ?', "%#{word}%")
+    end
+  end
+
 end
