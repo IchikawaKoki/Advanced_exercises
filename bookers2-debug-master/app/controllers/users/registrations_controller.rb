@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
   super
-  ThanksMailer.complete_registration(current_user).deliver unless resource.invalid?
+  #ThanksMailer.complete_registration(current_user).deliver unless resource.invalid?
   end
 
   # GET /resource/edit

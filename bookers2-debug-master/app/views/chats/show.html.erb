@@ -1,0 +1,19 @@
+<div class="chat-room">
+  <h1 id="room"><%= @user.name %> さんとのチャット</h1>
+  <div class = "chat">
+    <% @chats.each do |chat| %>
+      <% if chat.user_id == current_user.id %>
+        <p class="my-chat"><%= chat.message %></p>
+      <% else %>
+        <p style="opponent-chat"><%= chat.message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="chat-form">
+  <%= form_with model: @chat do |f| %>
+    <%= f.text_area :message, placeholder:"チャットを入力してください",size:"60x2" %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit "送信" %>
+  <% end %>
+  </div>
+</div>
