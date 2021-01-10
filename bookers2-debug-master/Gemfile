@@ -73,3 +73,5 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'jp_prefecture'
 
 gem 'pry-byebug'
+
+gem 'whenever', require: false
