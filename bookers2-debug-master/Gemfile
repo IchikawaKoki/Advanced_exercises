@@ -75,3 +75,5 @@ gem 'jp_prefecture'
 gem 'pry-byebug'
 
 gem 'whenever', require: false
+
+gem 'rubocop-airbnb'

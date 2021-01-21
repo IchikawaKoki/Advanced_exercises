@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_book, only: [:edit,:update,:destroy]
+  before_action :correct_book, only: [:edit, :update, :destroy]
 
   def show
     @book_new = Book.new
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title,:body)
+    params.require(:book).permit(:title, :body)
   end
 
   def correct_book
@@ -55,5 +55,4 @@ class BooksController < ApplicationController
       redirect_to books_path
     end
   end
-
 end

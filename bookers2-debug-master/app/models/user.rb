@@ -6,9 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :books,dependent: :destroy
-  has_many :favorites,dependent: :destroy
-  has_many :book_comments,dependent: :destroy
+  has_many :books, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :active_relationships, source: :followed
@@ -22,8 +22,8 @@ class User < ApplicationRecord
 
   attachment :profile_image, destroy: false
 
-  validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
-  validates :introduction, length: {maximum: 50}
+  validates :name, length: { maximum: 20, minimum: 2 }, uniqueness: true
+  validates :introduction, length: { maximum: 50 }
 
   def following?(user)
     followings.include?(user)
@@ -56,5 +56,4 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
-
 end
